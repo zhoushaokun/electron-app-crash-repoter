@@ -3,8 +3,11 @@
  */
 import * as path from 'path';
 // eslint-disable-next-line import/no-extraneous-dependencies
+import * as Sentry from '@sentry/electron';
 import { BrowserWindow, app, ipcMain } from 'electron';
 import * as nodeEnv from '_utils/node-env';
+
+Sentry.init({ dsn: 'https://f2f9d54e57854d198ffdceeaf7703734@o4505402155532288.ingest.sentry.io/4505402157826048' });
 
 let mainWindow: Electron.BrowserWindow | undefined;
 
@@ -15,8 +18,8 @@ function createWindow() {
     width: 800,
     webPreferences: {
       devTools: nodeEnv.dev,
-      preload: path.join(__dirname, './preload.bundle.js'),
       webSecurity: nodeEnv.prod,
+      nodeIntegration: true,
     },
   });
 

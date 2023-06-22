@@ -14,7 +14,7 @@ const baseConfig = {
     'max-len': [
       'warn',
       {
-        code: 80,
+        code: 200,
         tabWidth: 2,
         ignoreComments: true,
       },
@@ -53,6 +53,7 @@ const tsConfig = {
     'import/no-deprecated': 'off',
     'import/no-named-as-default': 'off',
     'import/no-unused-modules': 'off',
+    'line-breakstyle': 'off',
   },
   settings: {
     'import/parsers': { '@typescript-eslint/parser': ['.ts', '.tsx'] },
