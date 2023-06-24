@@ -1,5 +1,6 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
+import {sentryWebpackPlugin} from '@sentry/webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
@@ -99,6 +100,13 @@ const rendererConfig = merge(commonConfig, {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './public/index.html'),
     }),
+    // sentryWebpackPlugin({
+    //   release: 'test-1',
+    //   include: './dist',
+    //   org: 'student-b4f',
+    //   project: 'electron',
+    //   authToken: '978fe9eab5d140c58fb43718da2476a7c829b32b2abf4c3f9cc1d68cc99bb8f9',
+    // }),
   ],
 });
 

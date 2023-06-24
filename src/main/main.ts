@@ -20,6 +20,7 @@ function createWindow() {
       devTools: nodeEnv.dev,
       webSecurity: nodeEnv.prod,
       nodeIntegration: true,
+      contextIsolation: false,
     },
   });
 

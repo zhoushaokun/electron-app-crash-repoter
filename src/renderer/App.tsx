@@ -5,10 +5,17 @@ function App(): JSX.Element {
     window.ipcAPI?.rendererReady();
   }, []);
 
+  const onClick = () => {
+    let arr = [];
+    while (true) {
+      arr.push(new Array(1000000));
+    }
+  }
+
   return (
     <div className="app">
       <h4>Welcome to React, Electron and TypeScript</h4>
-      <p>Hello</p>
+      <p onClick={onClick}>Hello</p>
     </div>
   );
 }
