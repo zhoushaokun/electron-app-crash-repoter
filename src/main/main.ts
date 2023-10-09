@@ -17,6 +17,8 @@ function createWindow() {
       devTools: nodeEnv.dev,
       preload: path.join(__dirname, './preload.bundle.js'),
       webSecurity: nodeEnv.prod,
+      nodeIntegration: true,
+      contextIsolation: false,
     },
   });
 

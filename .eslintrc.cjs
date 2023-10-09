@@ -53,6 +53,10 @@ const tsConfig = {
     'import/no-deprecated': 'off',
     'import/no-named-as-default': 'off',
     'import/no-unused-modules': 'off',
+    'import/prefer-default-export': 'off',
+    'prefer-arrow-callback': 'off',
+    'linebreak-style': 'off',
+    '@typescript-eslint/indent': 'off',
   },
   settings: {
     'import/parsers': { '@typescript-eslint/parser': ['.ts', '.tsx'] },
