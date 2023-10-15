@@ -91,6 +91,23 @@ const preloadConfig = merge(commonConfig, {
   output: { filename: 'preload.bundle.js' },
 });
 
+const pluginConfig = merge(commonConfig, {
+  entry: './src/plugin/index.ts',
+  target: 'electron-main',
+  output: { filename: 'plugin.bundle.js' },
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        resolve: {
+          fullySpecified: false,
+        },
+      },
+    ],
+  }
+});
+
+
 const rendererConfig = merge(commonConfig, {
   entry: './src/renderer/renderer.tsx',
   target: 'electron-renderer',
@@ -100,6 +117,16 @@ const rendererConfig = merge(commonConfig, {
       template: path.resolve(__dirname, './public/index.html'),
     }),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        resolve: {
+          fullySpecified: false,
+        },
+      },
+    ],
+  }
 });
 
-export default [mainConfig, preloadConfig, rendererConfig];
+export default [mainConfig, preloadConfig, pluginConfig, rendererConfig];

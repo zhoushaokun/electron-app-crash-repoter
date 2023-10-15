@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react';
 import { runAdd } from './plugins/client';
-import { initServer } from './plugins/plugin-server';
 
 function App(): JSX.Element {
   useEffect(() => {
     window.ipcAPI?.rendererReady();
-    initServer();
   }, []);
-
 
   const onClick = () => {
     runAdd();

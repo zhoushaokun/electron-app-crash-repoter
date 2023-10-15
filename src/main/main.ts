@@ -39,7 +39,6 @@ function createWindow() {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   if (nodeEnv.dev || nodeEnv.prod) createWindow();
-
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows.length === 0) createWindow();
   });

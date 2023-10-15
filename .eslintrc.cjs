@@ -57,6 +57,7 @@ const tsConfig = {
     'prefer-arrow-callback': 'off',
     'linebreak-style': 'off',
     '@typescript-eslint/indent': 'off',
+    '@typescript-eslint/restrict-template-expressions': "off",
   },
   settings: {
     'import/parsers': { '@typescript-eslint/parser': ['.ts', '.tsx'] },

@@ -1,15 +1,36 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import jayson from 'jayson';
+import { DefaultEventsMap } from 'socket.io/dist/typed-events';
 
-// create a client
-const client = jayson.Client.tcp({
-  port: 3000,
-});
+import { Socket, io } from 'socket.io-client';
 
-export function runAdd() {
-    // invoke "add"
-    client.request('add', [1, 1], function (err: any, response: any) {
-    if (err) throw err;
-      console.log(response.result); // 2
+type SocketType = Socket<DefaultEventsMap, DefaultEventsMap>;
+
+let socket: SocketType | null = null;
+
+function establishSocket(): Promise<SocketType | null> {
+  const s = io('ws://127.0.0.1:3000');
+
+  return new Promise((resolve) => {
+    console.log('connect to server :>> ');
+    s.on('connect', () => {
+      resolve(s);
     });
+
+    s.on('disconnect', () => {
+      resolve(null);
+    });
+  });
+}
+
+async function getSocket() {
+  if (!socket) {
+    socket = await establishSocket();
+  }
+  return socket!;
+}
+
+export async function runAdd() {
+  const s = await getSocket();
+  s.emit('runAdd', 1, 2, (v: any) => {
+    console.log('v :>> ', v);
+  });
 }
