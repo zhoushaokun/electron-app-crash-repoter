@@ -5,6 +5,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 import webpack from 'webpack';
 import { merge } from 'webpack-merge';
+import nodeExternals from 'webpack-node-externals';
 
 /* eslint-disable no-underscore-dangle */
 const __filename = fileURLToPath(import.meta.url);
@@ -52,6 +53,7 @@ const commonConfig = {
       },
     ],
   },
+  externals: [nodeExternals()],
 };
 
 const mainConfig = merge(commonConfig, {
@@ -104,9 +106,8 @@ const pluginConfig = merge(commonConfig, {
         },
       },
     ],
-  }
+  },
 });
-
 
 const rendererConfig = merge(commonConfig, {
   entry: './src/renderer/renderer.tsx',
@@ -126,7 +127,7 @@ const rendererConfig = merge(commonConfig, {
         },
       },
     ],
-  }
+  },
 });
 
 export default [mainConfig, preloadConfig, pluginConfig, rendererConfig];

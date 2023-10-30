@@ -1,5 +1,3 @@
-import {
-    initServer,
-} from './plugin-server';
+import { PluginHost } from './plugin-host';
 
-initServer()
+PluginHost.active();

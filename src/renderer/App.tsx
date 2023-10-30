@@ -1,13 +1,17 @@
 import React, { useEffect } from 'react';
-import { runAdd } from './plugins/client';
+// import { runAdd } from './plugins/client';
+import { PluginServer } from './plugins/plugin-server';
 
 function App(): JSX.Element {
+  const serverInstance = React.useRef<PluginServer>(new PluginServer());
   useEffect(() => {
     window.ipcAPI?.rendererReady();
+    serverInstance.current.startServer();
   }, []);
 
   const onClick = () => {
-    runAdd();
+    // runAdd();
+    serverInstance.current.executeMethod<number[]>('RunAdd', [1, 2]);
   };
   return (
     <div className="app">
